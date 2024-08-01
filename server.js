@@ -21,4 +21,5 @@ app.get('/shops', (req, res) => {
     res.json(shops);
 });
 
-app.listen(5000);
+app.listen(5000,console.log("shops"));
+console.log("shops");
