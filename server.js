@@ -13,8 +13,8 @@ let shops = [
     { id: 1, name: "My Shop", location: "123 Main St" }
 ];
 
-app.use('/', (req, res) => {
-    res.send("shops2");
+app.use('/shops', (req, res) => {
+    res.send("shops2");res.json(shops);
 });
 
 app.get('/shops', (req, res) => {
