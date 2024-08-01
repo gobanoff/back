@@ -18,7 +18,7 @@ let shops = [
 //});
 
 app.get('/shops', (req, res) => {
-    res.json(shops);
+    res.json(shops);console.log("shops");
 });
 
 
