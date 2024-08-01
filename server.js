@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 
 // Sample data for the shop and items
 let shops = [
+    { id: 1, name: "My Shop", location: "123 Main St" },
+    { id: 1, name: "My Shop", location: "123 Main St" },
+    { id: 1, name: "My Shop", location: "123 Main St" },
+    { id: 1, name: "My Shop", location: "123 Main St" },
     { id: 1, name: "My Shop", location: "123 Main St" }
 ];
 
