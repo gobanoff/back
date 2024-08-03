@@ -35,14 +35,12 @@ app.get("/", (req, res) => {
   res.send("Hello from the serverless function!");
 });
 
-// Export the serverless function
-module.exports = (req, res) => {
-  connectToDb()
-    .then(() => {
+module.exports = async (req, res) => {
+    try {
+      await connectToDb();
       app(req, res); // Pass the request and response to Express
-    })
-    .catch((err) => {
+    } catch (err) {
       console.error("Failed to connect to the database", err);
       res.status(500).json({ message: "Database connection error" });
-    });
-};
+    }
+  };
