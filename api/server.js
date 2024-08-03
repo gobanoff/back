@@ -30,6 +30,9 @@ app.get("/businesses", async (req, res) => {
     res.status(500).json({ message: "Error fetching businesses", error: err });
   }
 });
+app.get("/", (req, res) => {
+  res.send("Hello from the serverless function!");
+});
 connectToDb()
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
