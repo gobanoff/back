@@ -9,7 +9,7 @@ const connectToDb = async () => {
     const url = process.env.MONGODB_URI;
     if (!url) {
       console.error('MONGODB_URI is not defined');
-      process.exit(1);
+    
     }
     await mongoose.connect(url);
     console.log('Connected to MongoDB with Mongoose');
