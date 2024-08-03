@@ -1,10 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const { connectToDb } = require("./db");
+const { connectToDb, PORT } = require("./db");
 const Business = require("./businesses");
 dotenv.config();
 
+// Create an Express app
 const app = express();
 
 // Middleware to parse JSON request body
@@ -21,7 +22,6 @@ app.get("/shops", (req, res) => {
   res.json(shops);
   console.log("Retrieved shops");
 });
-
 app.get("/businesses", async (req, res) => {
   try {
     const businesses = await Business.find();
@@ -30,19 +30,15 @@ app.get("/businesses", async (req, res) => {
     res.status(500).json({ message: "Error fetching businesses", error: err });
   }
 });
-
 app.get("/", (req, res) => {
   res.send("Hello from the serverless function!");
 });
+connectToDb()
+  .then(() => {
+    console.log(`Server running on port ${PORT}`);
+  })
+  .catch((err) => {
+    console.error("Failed to connect to the database", err);
+  });
 
-// Export the serverless function
-module.exports = (req, res) => {
-  connectToDb()
-    .then(() => {
-      app(req, res); // Pass the request and response to Express
-    })
-    .catch((err) => {
-      console.error("Failed to connect to the database", err);
-      res.status(500).json({ message: "Database connection error" });
-    });
-};
+module.exports = app;
