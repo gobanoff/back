@@ -33,7 +33,7 @@ app.get("/businesses", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello from the Express server!");
+  res.send("Hello from the Exprass server!");
 });
 
 connectToDb()
